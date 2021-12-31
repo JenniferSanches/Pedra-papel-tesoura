@@ -9,14 +9,16 @@
             return items[Math.floor(Math.random()*items.length)];
         }
 
-        const playerSelection = prompt("Escolha Pedra, Papel ou Tesoura");
-        const playerChoice = playerSelection.toLowerCase();
-        const computerSelection = computerPlay(items);
-        console.log(computerSelection);
+        let playerChoice, playerSelection, computerSelection;
 
         let pontPlayer = 0;
         let pontComputer = 0;
         function singleRun(playerChoice, computerSelection){
+            playerSelection = prompt("Escolha Pedra, Papel ou Tesoura");
+            playerChoice = playerSelection.toLowerCase();
+            computerSelection = computerPlay(items);
+            console.log(computerSelection);
+
             if(playerChoice == computerSelection){
                 return console.log("Empatou!!!")
             }else if (playerChoice === "pedra" && computerSelection == "papel"){
@@ -31,7 +33,7 @@
             }else if (playerChoice === "tesoura" && computerSelection == "pedra"){
                 pontComputer += 1;
                 return console.log("Você perdeu!!! Pedra ganha de tesoura")
-            }else if (playerChoice=== "pedra" && computerSelection == "tesoura"){
+            }else if (playerChoice === "pedra" && computerSelection == "tesoura"){
                 pontPlayer += 1;
                 return console.log("Você ganhou!!! Pedra ganha de Tesoura")
             }else if (playerChoice === "papel" && computerSelection == "tesoura"){
@@ -39,14 +41,23 @@
                 return console.log("Você perdeu!!! Tesoura ganha de Papel")
             }
         }
-        
-        function game(){
-            for(let i = 0; i < 6; i++){
-                singleRun(playerChoice, computerSelection);
-            }
-            
-        }
 
+        for(let i = 0; i < 5; i++){
+            singleRun(playerChoice,computerSelection);
+        }
+        
+        function gameWinner(){
+            if (pontPlayer > pontComputer){
+                return console.log("PARABÉNS!!! Você venceu o jogo!!!")
+            } else if (pontComputer > pontPlayer){
+                return console.log("Que pena!!! Você perdeu o jogo:((")
+            } else {
+                return console.log("O jogo empatou!!!")
+            }
+        }
+        gameWinner();
+       
+        
         
 
     </script>
